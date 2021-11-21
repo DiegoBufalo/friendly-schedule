@@ -1,4 +1,4 @@
-package db.dbspringtemplate.rest.error;
+package db.dbspringtemplate.error;
 
 import java.util.Date;
 

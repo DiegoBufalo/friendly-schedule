@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: agenda-usuario-create-table
+      author: diegobufalo
+      changes:
+        - createTable:
+            tableName: agenda_usuario
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: usuario_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_agenda_usuario_usuario_id
+                    references: usuario(id)
+                    nullable: false
+              - column:
+                  name: horarios_agenda
+                  type: timestamp
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: ocupado
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: mensagem
+                  type: varchar(2500)
+        - createSequence:
+            sequenceName: agenda_usuario_id_seq
+            incrementBy: 50

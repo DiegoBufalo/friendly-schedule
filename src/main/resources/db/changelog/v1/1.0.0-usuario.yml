@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: usuario-create-table
+      author: diegobufalo
+      changes:
+        - createTable:
+            tableName: usuario
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: nome
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: data_nascimento
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cpf
+                  type: varchar(11)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: ativo
+                  type: boolean
+                  constraints:
+                    nullable: false
+        - createSequence:
+            sequenceName: usuario_id_seq
+            incrementBy: 50
