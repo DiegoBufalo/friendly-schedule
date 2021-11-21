@@ -9,7 +9,7 @@ import java.util.List;
 public interface AgendaUsuarioService {
 
     List<AgendaUsuarioDto> buscarAgendaUsuario(Long usuarioId);
-    AgendaUsuarioDto inserirItemNaAgenda(Long usuarioId, AgendaUsuarioDto agendaUsuarioDto);
+    void inserirItemNaAgenda(Long usuarioId, AgendaUsuarioDto agendaUsuarioDto);
     void rematerializarAgendaUsuario(Long usuarioId, Integer diasARematerializar);
     void limparAgenda(Long usuarioId);
     void materializarAgendaUsuario(Usuario usuario, LocalDate dataInicial, LocalDate dataFinal);

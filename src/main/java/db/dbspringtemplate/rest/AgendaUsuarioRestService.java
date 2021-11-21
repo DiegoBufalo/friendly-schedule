@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/usuario/{usuarioId}/agenda")
-public class AgendaUsuarioRestService {
+public class AgendaUsuarioRestService extends AllowCrossOrigin{
 
     private final AgendaUsuarioService agendaUsuarioService;
 
@@ -41,9 +41,9 @@ public class AgendaUsuarioRestService {
             @ApiResponse(code = 400, message = "Bad request", response = RestErrorModel.class),
             @ApiResponse(code = 409, message = "Conflict", response = RestErrorModel.class)
     })
-    public AgendaUsuarioDto inserirItemNaAgenda(@PathVariable Long usuarioId,
-                                    @RequestBody @Valid AgendaUsuarioDto request) {
-       return this.agendaUsuarioService.inserirItemNaAgenda(usuarioId, request);
+    public void inserirItemNaAgenda(@PathVariable Long usuarioId,
+                                    @RequestBody @Valid List<AgendaUsuarioDto> request) {
+        request.forEach(x -> this.agendaUsuarioService.inserirItemNaAgenda(usuarioId, x));
     }
 
     @PutMapping("/{diasAmaterializar}")

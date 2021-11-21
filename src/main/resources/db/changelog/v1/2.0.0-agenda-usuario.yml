@@ -24,7 +24,6 @@ databaseChangeLog:
                   type: timestamp
                   constraints:
                     nullable: false
-                    unique: true
               - column:
                   name: ocupado
                   type: boolean

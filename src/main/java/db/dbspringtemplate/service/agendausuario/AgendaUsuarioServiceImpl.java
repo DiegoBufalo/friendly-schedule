@@ -39,7 +39,7 @@ public class AgendaUsuarioServiceImpl implements AgendaUsuarioService {
     }
 
     @Override
-    public AgendaUsuarioDto inserirItemNaAgenda(Long usuarioId, AgendaUsuarioDto agendaUsuarioDto) {
+    public void inserirItemNaAgenda(Long usuarioId, AgendaUsuarioDto agendaUsuarioDto) {
 
         AgendaUsuario agendaUsuario = agendaUsuarioRepository
                 .buscarHorarioAgenda(usuarioId, agendaUsuarioDto.getId()).orElseThrow(() -> {
@@ -48,8 +48,6 @@ public class AgendaUsuarioServiceImpl implements AgendaUsuarioService {
 
         agendaUsuario.setMensagem(agendaUsuarioDto.getMensagem());
         agendaUsuario.setOcupado(true);
-
-        return AgendaUsuarioDto.fromEntity(agendaUsuario);
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/usuarios")
-public class UsuarioRestService {
+public class UsuarioRestService extends AllowCrossOrigin{
 
     private final UsuarioService usuarioService;
 
@@ -70,7 +70,7 @@ public class UsuarioRestService {
     @ApiResponses({
             @ApiResponse(code = 404, message = "Sample not found", response = RestErrorModel.class)
     })
-    public void desativarUsuario(@PathVariable Long id) {
+        public void desativarUsuario(@PathVariable Long id) {
             this.usuarioService.desativarUsuario(id);
     }
 }
